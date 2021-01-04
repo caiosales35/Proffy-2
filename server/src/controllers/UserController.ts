@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import db from "../database/connection";
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
 
 export default class UserController {
   async create(request: Request, response: Response) {
