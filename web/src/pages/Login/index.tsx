@@ -1,27 +1,25 @@
-import React, { FormEvent, useState } from "react";
-
+import React, { FormEvent, useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import "./styles.css";
 import logoImg from "../../assets/images/logo.svg";
-import api from "../../services/api";
+import AuthContext from "../../Context/AuthContext";
 
 function Login() {
+  const history = useHistory();
+  const { signed, signIn } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function signIn(e: FormEvent) {
+  function hangleSignIn(e: FormEvent) {
     e.preventDefault();
-    api
-      .post("/login", {
-        email,
-        password,
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => alert("Email ou senha incorretos..."));
-
-    setEmail("");
-    setPassword("");
+    signIn(email, password)
+      .then(() => history.push("/initial"))
+      .catch((err) => {
+        alert("Email ou senha incorretos...");
+        setEmail("");
+        setPassword("");
+      });
   }
 
   return (
@@ -31,7 +29,7 @@ function Login() {
         <h2 className="titulo">Sua plataforma de estudos online.</h2>
       </div>
       <div className="formContainer">
-        <form className="form" onSubmit={signIn}>
+        <form className="form" onSubmit={hangleSignIn}>
           <h1 className="tituloForm">Proffy - login</h1>
           <input
             className="input"
