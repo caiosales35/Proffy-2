@@ -22,7 +22,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       email,
       password,
     });
-    api.defaults.headers.Authorization = `Baerer ${response.data.token}`;
+    api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
     setUserId(response.data.user_id);
     setUserEmail(response.data.email);
     setUserName(response.data.name);

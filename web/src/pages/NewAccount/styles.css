@@ -54,6 +54,18 @@
   padding: 1rem;
 }
 
+textarea {
+  width: 100%;
+  height: 10rem;
+  min-height: 8rem;
+  margin-top: 0.8rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--color-line-in-white);
+  outline: 0;
+  resize: vertical;
+  padding: 1.2rem 1.6rem;
+}
+
 .form button {
   margin-top: 1.5rem;
   background-color: var(--color-secundary);

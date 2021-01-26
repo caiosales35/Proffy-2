@@ -3,6 +3,7 @@ import { BrowserRouter, Redirect, Route } from "react-router-dom";
 import AuthContext from "./Context/AuthContext";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
+import NewAccount from "./pages/NewAccount";
 import TeacherForm from "./pages/TeacherForm";
 import TeacherList from "./pages/TeacherList";
 
@@ -19,6 +20,7 @@ function Routes() {
   return (
     <BrowserRouter>
       <CustonRoute path="/" exact component={Login} />
+      <CustonRoute path="/new" component={NewAccount} />
       <CustonRoute isPrivate path="/study" component={TeacherList} />
       <CustonRoute isPrivate path="/initial" exact component={Landing} />
       <CustonRoute isPrivate path="/give-classes" component={TeacherForm} />

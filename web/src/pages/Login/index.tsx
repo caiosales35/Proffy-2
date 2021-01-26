@@ -1,5 +1,5 @@
 import React, { FormEvent, useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./styles.css";
 import logoImg from "../../assets/images/logo.svg";
 import AuthContext from "../../Context/AuthContext";
@@ -53,7 +53,7 @@ function Login() {
           */}
           <button type="submit">Entrar</button>
           <a>Esqueci minha senha</a>
-          <a>Cadastre-se de graça</a>
+          <Link to="new">Cadastre-se de graça</Link>
         </form>
       </div>
     </div>
