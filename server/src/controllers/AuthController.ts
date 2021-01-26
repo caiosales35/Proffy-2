@@ -17,9 +17,12 @@ export default class AuthController {
         function (err: Error, result: boolean) {
           if (err || !result)
             return response.status(401).send("User authentication failed!");
-          response.json(
-            jwt.sign({ user_id: user.id, email, name: user.name }, secret)
-          );
+          response.json({
+            token: jwt.sign({ user_id: user.id }, secret),
+            user_id: user.id,
+            email,
+            name: user.name,
+          });
         }
       );
     } else {
