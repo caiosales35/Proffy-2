@@ -4,7 +4,6 @@ import Input from "../../components/Input";
 import PageHeader from "../../components/PageHeader";
 
 import "./styles.css";
-import warningIcon from "../../assets/images/icons/warning.svg";
 import Select from "../../components/Select";
 import api from "../../services/api";
 import AuthContext from "../../Context/AuthContext";
@@ -75,7 +74,7 @@ function TeacherForm() {
             />
             <Input
               name="cost"
-              label="Custo da sua hora por aula"
+              label="*Custo da sua hora por aula"
               value={cost}
               onChange={(e) => setCost(e.target.value)}
             />
@@ -131,9 +130,8 @@ function TeacherForm() {
           </fieldset>
           <footer>
             <p>
-              <img src={warningIcon} alt="Aviso importante" />
-              Importante! <br />
-              Preencha todos os dados
+              *O pagamento deve ser combinada diretamento com os interessados
+              nas aulas, que entrarem em contato via whatsapp.
             </p>
             <button type="submit">Cadastrar aula</button>
           </footer>

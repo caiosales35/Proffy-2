@@ -39,6 +39,7 @@ const TeacherItem: React.FunctionComponent<TeacherItemProps> = ({
       <footer>
         <p>
           Preço/hora <strong>R$ {teacher.cost}</strong>
+          <p>*A forma pagamento deve ser combinada direto com o professor</p>
         </p>
         <a
           href={`https://wa.me/${teacher.whatsapp}`}
