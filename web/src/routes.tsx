@@ -1,15 +1,29 @@
-import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import React, { useContext } from "react";
+import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import AuthContext from "./Context/AuthContext";
 import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import NewAccount from "./pages/NewAccount";
 import TeacherForm from "./pages/TeacherForm";
 import TeacherList from "./pages/TeacherList";
+
+function CustonRoute({ isPrivate, ...rest }: any) {
+  const { signed } = useContext(AuthContext);
+
+  if (!signed && isPrivate) {
+    return <Redirect to="/" />;
+  }
+  return <Route {...rest} />;
+}
 
 function Routes() {
   return (
     <BrowserRouter>
-      <Route path="/" exact component={Landing} />
-      <Route path="/study" component={TeacherList} />
-      <Route path="/give-classes" component={TeacherForm} />
+      <CustonRoute path="/" exact component={Login} />
+      <CustonRoute path="/new" component={NewAccount} />
+      <CustonRoute isPrivate path="/study" component={TeacherList} />
+      <CustonRoute isPrivate path="/initial" exact component={Landing} />
+      <CustonRoute isPrivate path="/give-classes" component={TeacherForm} />
     </BrowserRouter>
   );
 }

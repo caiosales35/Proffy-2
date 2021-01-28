@@ -56,6 +56,10 @@
   display: block;
 }
 
+.teacher-item footer p p {
+  font-size: 1.2rem;
+}
+
 .teacher-item footer a {
   width: 20rem;
   height: 5.6rem;

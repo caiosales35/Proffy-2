@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/images/logo.svg";
 import backIcon from "../../assets/images/icons/back.svg";
 
 import "./styles.css";
+import AuthContext from "../../Context/AuthContext";
 
 interface PageHeaderProps {
   title: string;
@@ -12,13 +13,16 @@ interface PageHeaderProps {
 }
 
 const PageHeader: React.FunctionComponent<PageHeaderProps> = (props) => {
+  const { logOut } = useContext(AuthContext);
+
   return (
     <header className="page-header">
       <div className="top-bar-container">
-        <Link to="/">
+        <Link to="/initial">
           <img src={backIcon} alt="Voltar" />
         </Link>
         <img src={logoImg} alt="Proffy" />
+        <button onClick={logOut}>Sair</button>
       </div>
       <div className="header-content">
         <strong>{props.title}</strong>
